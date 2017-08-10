@@ -378,6 +378,7 @@
 
         }
         else{
+           $("#comboId").val("");
              $("#comboId").hide();
             $("#nCHFabrica").prop("disabled",false);
             $("#nCHModelo").prop("disabled",false);
@@ -404,6 +405,7 @@
 
         }
     function consulta(){
+      
         closePanel();
         var id=document.getElementById("nId");
         var fabrica=document.getElementById("nCHFabrica");
@@ -545,6 +547,24 @@
             }
         });
     }
+    
+    function validarIfId(){
+            var id=document.getElementById("nId");
+
+       if(id.checked){
+            if($('#nIdData').val()!=''){
+               consulta();
+            }
+            else{
+                 alert("Para busqueda por Id el mismo no puede ir vacio.");
+                return false;
+            }
+        }
+        else{
+            consulta();
+        }
+    
+    }
             </script>
     </head>
     <body>
@@ -558,6 +578,16 @@
             <center>
                  <h1>Reportes Dinamicos</h1>
              <h3>seleccione campos y condiciones</h3>
+              <span style="float: left;width:100px;">
+            Seleccionar 
+            </span>
+            <span style="float: left;">
+                SI/NO
+            </span>
+            <span  style="float: left;margin-left: 10%;">
+                Filtrar por:(opcional)
+            </span>
+             <br><br>
              <span style="float: left;width:100px;">
             ID:
             </span>
@@ -674,7 +704,7 @@
             </span>
             <br>
              <br>
-             <img src="img/check.png" alt="agregar registro" onclick="consulta();"/>
+             <img src="img/check.png" alt="agregar registro" onclick="validarIfId();"/>
             </center>
         </div>
             <div id="baackDiv" class="black_overlay"></div>

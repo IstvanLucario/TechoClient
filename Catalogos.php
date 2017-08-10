@@ -222,9 +222,10 @@
 
         }
         function agregar(dato){
-            $('#nDato').val("");
+           if( $('#nDato').val()!=''){
            var con=confirm("desea agregar un nuevo registro");
                if(con){
+                    $('#nDato').val("");
                    closePanel();
               // alert('ServicesVehiculos/AddVehiculo.php?fabrica='+fabrica+'&modelo='+modelo+'&ANIO='+ANIO+'&color='+color+'&motor='+motor+'&tipo='+tipo+'&kilometraje='+kilometraje+'km');
         $.ajax( { type : 'POST',
@@ -240,8 +241,12 @@
                   }
                 });
             }
+          }else{
+              alert("Dato no puede ser vacio.");
+          }
         }
         function actualizar(id,dato){
+            if( $('#mDato').val()!=''){
            var con=confirm("desea modificar el registro con id: "+id);
                if(con){
                    closePanelModifica();
@@ -278,6 +283,10 @@
                   }
                 });
             }
+         }
+         else{
+             alert("Dato no puede ser vacio.");
+         }
         }
         function eliminar(id) {
            var con=confirm("desea eliminar el registro "+id);

@@ -298,7 +298,13 @@ function cargarFabricas(idSelect){
             }
         }
         function actualizar(id,fabrica,modelo,ANIO,color,motor,tipo,kilometraje){
-            
+            if( $('#mFabrica').select().val()!='' &&
+            $('#mModelo').select().val()!=''&&
+            $('#mAnio').select().val()!=''&&
+            $('#mColor').select().val()!=''&&
+            $('#mMotor').select().val()!=''&&
+            $('#mTipo').select().val()!=0&&
+            $('#mKilometraje').val()!=''){
                         var kilometraje2=kilometraje+'km';
            var con=confirm("desea Modificar el registro "+id);
                if(con){
@@ -319,9 +325,24 @@ function cargarFabricas(idSelect){
                   }
                 });
             }
+         }else{
+              alert("Debe llenar todos los campos");
+             
+          }
         }
         
         function agregar(fabrica,modelo,ANIO,color,motor,tipo,kilometraje){
+         
+         if( $('#nFabrica').select().val()!='' &&
+            $('#nModelo').select().val()!=''&&
+            $('#nAnio').select().val()!=''&&
+            $('#nColor').select().val()!=''&&
+            $('#nMotor').select().val()!=''&&
+            $('#nTipo').select().val()!=0&&
+            $('#nKilometraje').val()!=''){
+            var kilometraje2=kilometraje+'km';
+           var con=confirm("desea agregar un nuevo registro");
+               if(con){
             $('#nFabrica').select().val(0);
             $('#nModelo').select().val(0);
             $('#nAnio').select().val(0);
@@ -329,9 +350,6 @@ function cargarFabricas(idSelect){
             $('#nMotor').select().val(0);
             $('#nTipo').select().val(0);
             $('#nKilometraje').val("");
-            var kilometraje2=kilometraje+'km';
-           var con=confirm("desea agregar un nuevo registro");
-               if(con){
                    closePanel();
               // alert('ServicesVehiculos/AddVehiculo.php?fabrica='+fabrica+'&modelo='+modelo+'&ANIO='+ANIO+'&color='+color+'&motor='+motor+'&tipo='+tipo+'&kilometraje='+kilometraje+'km');
         $.ajax( { type : 'POST',
@@ -349,6 +367,11 @@ function cargarFabricas(idSelect){
                   }
                 });
             }
+          }
+          else{
+              alert("Debe llenar todos los campos");
+             
+          }
         }
         function openPanel(){
             
